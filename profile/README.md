@@ -85,4 +85,4 @@ Steps in a track run one after another; parallel work goes in separate tracks; e
 
 ## License
 
-Apache-2.0 across the organization's public repositories.
+Apache-2.0 for the specification, tools, examples and timeline engine; the MCP documentation repository is MIT.
