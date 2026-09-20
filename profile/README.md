@@ -99,4 +99,4 @@ Steps in a track run one after another; parallel work goes in separate tracks; e
 
 ## License
 
-Apache-2.0 for the specification, tools, examples and timeline engine; the MCP server repository is MIT.
+Apache-2.0 throughout: the specification, tools, examples, timeline engine and MCP server.
