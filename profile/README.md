@@ -25,24 +25,38 @@ https://mcp.rhylthyme.com/events/mcp     + plan_event, random_event_template
 https://mcp.rhylthyme.com/gym/mcp        + start_workout, surprise_workout
 ```
 
+**Claude Code plugin.** One install connects the hosted server and adds a skill that teaches Claude to write a schedule well (extract the steps before relating them, validate, check for conflicts, work back from a deadline):
+
+```
+/plugin marketplace add rhylthyme/rhylthyme-mcp
+/plugin install rhylthyme@rhylthyme
+```
+
+**Any other MCP client.** Add an endpoint URL as a connector: Claude (Settings → Connectors → Add custom connector), ChatGPT (developer mode → create a connector), Cursor (`{"url": "https://mcp.rhylthyme.com/mcp"}`), or
+
 ```bash
 claude mcp add --transport http rhylthyme https://mcp.rhylthyme.com/kitchen/mcp
 ```
 
-Streamable HTTP, no sign-in needed for the public catalog and the pure tools (`validate_program`, `analyze_schedule`). See [rhylthyme-mcp](https://github.com/rhylthyme/rhylthyme-mcp) for the tool reference.
+Clients that can only launch a command: `pip install rhylthyme-mcp` gives a `rhylthyme-mcp` stdio bridge to the hosted server. No MCP client at all: a single JSON-RPC `POST` works with no handshake, and `llms.txt` on every rhylthyme.com host says how.
+
+Streamable HTTP, stateless. No account or API key is needed for validation, analysis, publishing a timeline or the public catalog; a personal library and recorded runs use your Rhylthyme account through OAuth 2.1. See [rhylthyme-mcp](https://github.com/rhylthyme/rhylthyme-mcp) for the tool reference.
 
 ## Repositories
 
 | Repository | What it is |
 |---|---|
 | [rhylthyme-spec](https://github.com/rhylthyme/rhylthyme-spec) | JSON Schema for programs and environments, annotated with OWL-Time vocabulary. On PyPI as `rhylthyme-spec`. |
-| [rhylthyme-cli-runner](https://github.com/rhylthyme/rhylthyme-cli-runner) | `rhylthyme` command line: validate, plan, run (terminal UI), visualize. On PyPI as `rhylthyme-cli-runner`. |
+| [rhylthyme-cli-runner](https://github.com/rhylthyme/rhylthyme-cli-runner) | The `rhylthyme` command a person types: validate a program file offline, run it in a terminal UI with timers, record runs and calibrate durations from them; `analyze`, `publish` and `generate` call the MCP server. Also the Claude skill's source and the prompt-evaluation harness. On PyPI as `rhylthyme-cli-runner`. |
 | [rhylthyme-timeline](https://github.com/rhylthyme/rhylthyme-timeline) | `@rhylthyme/timeline`: zero-dependency timing engine and SVG Gantt renderer with dependency arrows. Tested for parity with the Python validator. |
 | [rhylthyme-examples](https://github.com/rhylthyme/rhylthyme-examples) | Example programs and environment definitions across the verticals. |
-| [rhylthyme-mcp](https://github.com/rhylthyme/rhylthyme-mcp) | Documentation for the remote MCP server and its tools. |
+| [rhylthyme-mcp](https://github.com/rhylthyme/rhylthyme-mcp) | The server an AI assistant talks to: source of the hosted MCP server at `mcp.rhylthyme.com` (self-hostable), the Claude plugin marketplace, and the `rhylthyme-mcp` PyPI package, a stdio bridge to the hosted server. |
 | [rhylthyme-docs](https://github.com/rhylthyme/rhylthyme-docs) | Source of docs.rhylthyme.com. |
+| [paper](https://github.com/rhylthyme/paper) | The preprint: the language, the runtime, the MCP server, and an evaluation of seven language models authoring schedules from text. |
 
-The web application, importers (Spoonacular, TheMealDB, protocols.io, Cooklang, Opentrons, Benchling) and the MCP server implementation live in `rhylthyme-server`, which is being prepared for public release. A technical report describing the language, runtime and MCP server, and positioning them against project scheduling, temporal reasoning, robotics, lab automation and workflow engines, is in preparation.
+rhylthyme-mcp and rhylthyme-cli-runner are easy to confuse: the first is what an assistant calls, the second is what you run yourself on a program file, and the second is one of the first's clients. Each README has a side-by-side table.
+
+The web application and the importers (Spoonacular, TheMealDB, protocols.io, Cooklang, Opentrons, Benchling) live in `rhylthyme-server`, which is being prepared for public release.
 
 ## Quick start
 
@@ -85,4 +99,4 @@ Steps in a track run one after another; parallel work goes in separate tracks; e
 
 ## License
 
-Apache-2.0 for the specification, tools, examples and timeline engine; the MCP documentation repository is MIT.
+Apache-2.0 for the specification, tools, examples and timeline engine; the MCP server repository is MIT.
