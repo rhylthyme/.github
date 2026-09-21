@@ -24,8 +24,8 @@ dinner becomes a live timeline in one line:
 rhylthyme publish https://raw.githubusercontent.com/rhylthyme/.github/main/profile/examples/taco-night.json --image taco-night.png --open
 ```
 
-(Or install nothing: put `uvx --from rhylthyme-cli-runner` in front of it.) No
-account, no API key. It prints a summary, a text chart and
+(Or install nothing: put `uvx --python 3.12 --from rhylthyme-cli-runner` in
+front of it.) No account, no API key. It prints a summary, a text chart and
 
 ```
 Live timeline: https://kitchen.rhylthyme.com?share=7483178bdd5bf694
