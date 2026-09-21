@@ -13,6 +13,44 @@ The same schema serves four verticals:
 
 General entry point: [rhylthyme.com](https://www.rhylthyme.com). Documentation: [docs.rhylthyme.com](https://docs.rhylthyme.com).
 
+## Make one in a minute: taco night, no install
+
+Carnitas braise "until they shred", which nobody can put a number on, and the
+salsa, the margaritas, the tortillas and the table all have to land with them.
+One blender, two burners. Here is that dinner as a live timeline, using
+nothing but `curl` and `jq`:
+
+```bash
+# 1. a program: five tracks, nine steps, four pieces of equipment
+curl -sO https://raw.githubusercontent.com/rhylthyme/.github/main/profile/examples/taco-night.json
+
+# 2. publish it (no account, no API key); prints the timeline URL and an image URL
+curl -s https://mcp.rhylthyme.com/kitchen/mcp \
+  -H 'Content-Type: application/json' -H 'Accept: application/json' \
+  -d "$(jq -n --slurpfile p taco-night.json '{jsonrpc:"2.0",id:1,method:"tools/call",
+        params:{name:"visualize_schedule",arguments:{program:$p[0]}}}')" \
+  | jq -r '.result.structuredContent | .url, .imageUrl'
+```
+
+```
+https://kitchen.rhylthyme.com?share=9c6413356842499d
+https://kitchen.rhylthyme.com/api/og/timeline.png?share=9c6413356842499d
+```
+
+Open the first link on your phone and press play: timers and audio cues, and
+when the pork finally shreds you end the braise and everything after it moves. The
+second link is this picture:
+
+![Taco night for six: five tracks converging on the end of an open-ended braise](https://raw.githubusercontent.com/rhylthyme/.github/main/profile/images/taco-night.png)
+
+The hatched bar is the braise, which ends when you say so. The dashed arrows
+are steps that start a set time *before* it is due to end (char the tomatoes 30
+minutes out, juice the limes 12 minutes out), so if the pork needs another
+quarter of an hour, the margaritas wait with it. Now edit `taco-night.json`
+(add guacamole, take away a burner) and run step 2 again. Other ways to make
+one: from a terminal, [rhylthyme-cli-runner](https://github.com/rhylthyme/rhylthyme-cli-runner#a-timeline-in-five-commands-a-birthday-party);
+by asking Claude or ChatGPT, [rhylthyme-mcp](https://github.com/rhylthyme/rhylthyme-mcp#try-it-ask-for-a-workout).
+
 ## For AI agents (MCP)
 
 A remote [Model Context Protocol](https://modelcontextprotocol.io/) server exposes validation, timing analysis, catalog search, import and publication as annotated tools, plus the schema, an authoring guide and example programs as resources.
