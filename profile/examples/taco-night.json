@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "0.3.0-alpha",
+  "programId": "taco-night",
+  "name": "Taco night for six",
+  "environmentType": "kitchen",
+  "tracks": [
+    { "trackId": "carnitas", "name": "Carnitas", "steps": [
+      { "stepId": "sear", "name": "Sear the pork", "task": "burner",
+        "duration": { "type": "fixed", "seconds": "10m" }, "startTrigger": { "type": "programStart" } },
+      { "stepId": "braise", "name": "Braise until it shreds", "task": "oven",
+        "duration": { "type": "indefinite", "defaultSeconds": "90m" }, "startTrigger": { "type": "afterStep", "stepId": "sear" } },
+      { "stepId": "crisp", "name": "Shred and crisp", "task": "burner",
+        "duration": { "type": "fixed", "seconds": "10m" }, "startTrigger": { "type": "afterStep", "stepId": "braise" } } ] },
+    { "trackId": "salsa", "name": "Salsa", "steps": [
+      { "stepId": "char", "name": "Char tomatoes and chiles", "task": "burner",
+        "duration": { "type": "fixed", "seconds": "12m" }, "startTrigger": { "type": "afterStep", "stepId": "braise", "offsetSeconds": "-30m" } },
+      { "stepId": "blend-salsa", "name": "Blend salsa", "task": "blender",
+        "duration": { "type": "fixed", "seconds": "5m" }, "startTrigger": { "type": "afterStep", "stepId": "char" } } ] },
+    { "trackId": "margaritas", "name": "Margaritas", "steps": [
+      { "stepId": "juice", "name": "Juice a dozen limes", "task": "counter",
+        "duration": { "type": "fixed", "seconds": "10m" }, "startTrigger": { "type": "afterStep", "stepId": "braise", "offsetSeconds": "-12m" } },
+      { "stepId": "blend-margs", "name": "Blend margaritas", "task": "blender",
+        "duration": { "type": "fixed", "seconds": "4m" }, "startTrigger": { "type": "afterStep", "stepId": "juice" } } ] },
+    { "trackId": "tortillas", "name": "Tortillas", "steps": [
+      { "stepId": "warm", "name": "Warm tortillas", "task": "burner",
+        "duration": { "type": "variable", "minSeconds": "6m", "maxSeconds": "10m", "defaultSeconds": "8m" },
+        "startTrigger": { "type": "afterStep", "stepId": "braise" } } ] },
+    { "trackId": "table", "name": "Table", "steps": [
+      { "stepId": "toppings", "name": "Set out toppings", "task": "counter",
+        "duration": { "type": "fixed", "seconds": "10m" }, "startTrigger": { "type": "afterStep", "stepId": "braise" } } ] }
+  ],
+  "resourceConstraints": [
+    { "task": "burner", "maxConcurrent": 2 }, { "task": "oven", "maxConcurrent": 1 },
+    { "task": "blender", "maxConcurrent": 1 }, { "task": "counter", "maxConcurrent": 2 }
+  ]
+}
