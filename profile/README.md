@@ -17,10 +17,11 @@ General entry point: [rhylthyme.com](https://www.rhylthyme.com). Documentation: 
 
 Carnitas braise "until they shred", which nobody can put a number on, and the
 salsa, the margaritas, the tortillas and the table all have to land with them.
-One blender, two burners. With `pip install rhylthyme` done, that dinner
-becomes a live timeline in one line:
+One blender, two burners. Here is that dinner as a live timeline:
 
 ```bash
+python3 -m venv rhylthyme-env && source rhylthyme-env/bin/activate   # Python 3.12 or newer
+pip install rhylthyme
 rhylthyme publish https://raw.githubusercontent.com/rhylthyme/.github/main/profile/examples/taco-night.json --image taco-night.png --open
 ```
 
@@ -43,7 +44,11 @@ are steps that start a set time *before* it is due to end (char the tomatoes 30
 minutes out, juice the limes 12 minutes out), so if the pork needs another
 quarter of an hour, the margaritas wait with it. Now make it yours: save
 [the program](https://github.com/rhylthyme/.github/blob/main/profile/examples/taco-night.json), add guacamole or take away a
-burner, and `rhylthyme publish taco-night.json`. Other ways to make
+burner, and `rhylthyme publish taco-night.json`. Or start from a recipe you
+did not write: `rhylthyme import https://www.seriouseats.com/the-best-chili-recipe --publish`
+turns a page from any of about 580 recipe sites into a timeline (TheMealDB,
+Spoonacular, CookLang, protocols.io, Opentrons and Benchling work the same
+way). Other ways to make
 one: working back from a deadline in a terminal, [rhylthyme-cli-runner](https://github.com/rhylthyme/rhylthyme-cli-runner#a-timeline-in-five-commands-a-birthday-party);
 by asking Claude or ChatGPT, [rhylthyme-mcp](https://github.com/rhylthyme/rhylthyme-mcp#try-it-ask-for-a-workout).
 
@@ -82,6 +87,7 @@ Streamable HTTP, stateless. No account or API key is needed for validation, anal
 |---|---|
 | [rhylthyme-spec](https://github.com/rhylthyme/rhylthyme-spec) | JSON Schema for programs and environments, annotated with OWL-Time vocabulary. On PyPI as `rhylthyme-spec`. |
 | [rhylthyme-cli-runner](https://github.com/rhylthyme/rhylthyme-cli-runner) | The `rhylthyme` command a person types: validate a program file offline, run it in a terminal UI with timers, record runs and calibrate durations from them; `analyze`, `publish` and `generate` call the MCP server. Also the Claude skill's source and the prompt-evaluation harness. On PyPI as `rhylthyme-cli-runner`. |
+| [rhylthyme-importers](https://pypi.org/project/rhylthyme-importers/) | Importers that turn outside sources into programs: recipes from TheMealDB, Spoonacular, CookLang and about 580 recipe sites; protocols from protocols.io, Opentrons `.py` files and Benchling; slide decks. `rhylthyme import <url>` or `rhylthyme-import`. On PyPI as `rhylthyme-importers`; the repository is opening with rhylthyme-server. |
 | [rhylthyme-timeline](https://github.com/rhylthyme/rhylthyme-timeline) | `@rhylthyme/timeline`: zero-dependency timing engine and SVG Gantt renderer with dependency arrows. Tested for parity with the Python validator. On PyPI as `rhylthyme-timeline` (`rhylthyme-render`, runs on Node). |
 | [rhylthyme-examples](https://github.com/rhylthyme/rhylthyme-examples) | Example programs and environment definitions across the verticals. |
 | [rhylthyme-mcp](https://github.com/rhylthyme/rhylthyme-mcp) | The server an AI assistant talks to: source of the hosted MCP server at `mcp.rhylthyme.com` (self-hostable), the Claude plugin marketplace, and the `rhylthyme-mcp` PyPI package, a stdio bridge to the hosted server. |
@@ -90,7 +96,7 @@ Streamable HTTP, stateless. No account or API key is needed for validation, anal
 
 `pip install rhylthyme` installs rhylthyme-cli-runner, rhylthyme-importers and rhylthyme-timeline together. rhylthyme-mcp and rhylthyme-cli-runner are easy to confuse: the first is what an assistant calls, the second is what you run yourself on a program file, and the second is one of the first's clients. Each README has a side-by-side table.
 
-The web application and the importers (Spoonacular, TheMealDB, protocols.io, Cooklang, Opentrons, Benchling) live in `rhylthyme-server`, which is being prepared for public release.
+The web application lives in `rhylthyme-server`, which is being prepared for public release.
 
 ## Quick start
 
