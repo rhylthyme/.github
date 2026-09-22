@@ -29,12 +29,14 @@ rhylthyme publish https://raw.githubusercontent.com/rhylthyme/.github/main/profi
 front of it.) No account, no API key. It prints a summary, a text chart and
 
 ```
-Live timeline: https://kitchen.rhylthyme.com?share=7483178bdd5bf694
+Live timeline: https://kitchen.rhylthyme.com?share=c83cdcd3da455fc8
 Picture: taco-night.png
 ```
 
-Open the link on your phone and press play: timers and audio cues, and when
-the pork finally shreds you end the braise and everything after it moves. The
+Open the link on your phone: an ingredient checklist that doubles as a
+shopping list, an itinerary with the method under each step, and a timeline
+with timers and audio cues. When the pork finally shreds you end the braise
+and everything after it moves. The
 picture:
 
 ![Taco night for six: five tracks converging on the end of an open-ended braise](https://raw.githubusercontent.com/rhylthyme/.github/main/profile/images/taco-night.png)

@@ -4,33 +4,256 @@
   "name": "Taco night for six",
   "environmentType": "kitchen",
   "tracks": [
-    { "trackId": "carnitas", "name": "Carnitas", "steps": [
-      { "stepId": "sear", "name": "Sear the pork", "task": "burner",
-        "duration": { "type": "fixed", "seconds": "10m" }, "startTrigger": { "type": "programStart" } },
-      { "stepId": "braise", "name": "Braise until it shreds", "task": "oven",
-        "duration": { "type": "indefinite", "defaultSeconds": "90m" }, "startTrigger": { "type": "afterStep", "stepId": "sear" } },
-      { "stepId": "crisp", "name": "Shred and crisp", "task": "burner",
-        "duration": { "type": "fixed", "seconds": "10m" }, "startTrigger": { "type": "afterStep", "stepId": "braise" } } ] },
-    { "trackId": "salsa", "name": "Salsa", "steps": [
-      { "stepId": "char", "name": "Char tomatoes and chiles", "task": "burner",
-        "duration": { "type": "fixed", "seconds": "12m" }, "startTrigger": { "type": "afterStep", "stepId": "braise", "offsetSeconds": "-30m" } },
-      { "stepId": "blend-salsa", "name": "Blend salsa", "task": "blender",
-        "duration": { "type": "fixed", "seconds": "5m" }, "startTrigger": { "type": "afterStep", "stepId": "char" } } ] },
-    { "trackId": "margaritas", "name": "Margaritas", "steps": [
-      { "stepId": "juice", "name": "Juice a dozen limes", "task": "counter",
-        "duration": { "type": "fixed", "seconds": "10m" }, "startTrigger": { "type": "afterStep", "stepId": "braise", "offsetSeconds": "-12m" } },
-      { "stepId": "blend-margs", "name": "Blend margaritas", "task": "blender",
-        "duration": { "type": "fixed", "seconds": "4m" }, "startTrigger": { "type": "afterStep", "stepId": "juice" } } ] },
-    { "trackId": "tortillas", "name": "Tortillas", "steps": [
-      { "stepId": "warm", "name": "Warm tortillas", "task": "burner",
-        "duration": { "type": "variable", "minSeconds": "6m", "maxSeconds": "10m", "defaultSeconds": "8m" },
-        "startTrigger": { "type": "afterStep", "stepId": "braise" } } ] },
-    { "trackId": "table", "name": "Table", "steps": [
-      { "stepId": "toppings", "name": "Set out toppings", "task": "counter",
-        "duration": { "type": "fixed", "seconds": "10m" }, "startTrigger": { "type": "afterStep", "stepId": "braise" } } ] }
+    {
+      "trackId": "carnitas",
+      "name": "Carnitas",
+      "steps": [
+        {
+          "stepId": "sear",
+          "name": "Sear the pork",
+          "task": "burner",
+          "duration": {
+            "type": "fixed",
+            "seconds": "10m"
+          },
+          "startTrigger": {
+            "type": "programStart"
+          },
+          "description": "Cut 1.5 kg pork shoulder into fist-sized pieces, salt well, and sear in a heavy pot until browned on two sides."
+        },
+        {
+          "stepId": "braise",
+          "name": "Braise until it shreds",
+          "task": "oven",
+          "duration": {
+            "type": "indefinite",
+            "defaultSeconds": "90m"
+          },
+          "startTrigger": {
+            "type": "afterStep",
+            "stepId": "sear"
+          },
+          "description": "Add the orange juice, garlic, oregano, cumin and bay leaves, cover, and braise at 150 °C until a fork twists the meat apart easily. Check at 90 minutes."
+        },
+        {
+          "stepId": "crisp",
+          "name": "Shred and crisp",
+          "task": "burner",
+          "duration": {
+            "type": "fixed",
+            "seconds": "10m"
+          },
+          "startTrigger": {
+            "type": "afterStep",
+            "stepId": "braise"
+          },
+          "description": "Shred the pork, spread it on a tray with a ladle of the braising liquid, and crisp under the broiler or in a hot pan."
+        }
+      ]
+    },
+    {
+      "trackId": "salsa",
+      "name": "Salsa",
+      "steps": [
+        {
+          "stepId": "char",
+          "name": "Char tomatoes and chiles",
+          "task": "burner",
+          "duration": {
+            "type": "fixed",
+            "seconds": "12m"
+          },
+          "startTrigger": {
+            "type": "afterStep",
+            "stepId": "braise",
+            "offsetSeconds": "-30m"
+          },
+          "description": "Char the tomatoes, onion, jalapeños and garlic in a dry pan or under the broiler until blackened in spots."
+        },
+        {
+          "stepId": "blend-salsa",
+          "name": "Blend salsa",
+          "task": "blender",
+          "duration": {
+            "type": "fixed",
+            "seconds": "5m"
+          },
+          "startTrigger": {
+            "type": "afterStep",
+            "stepId": "char"
+          },
+          "description": "Blend the charred vegetables with lime juice, cilantro and salt. Leave it chunky."
+        }
+      ]
+    },
+    {
+      "trackId": "margaritas",
+      "name": "Margaritas",
+      "steps": [
+        {
+          "stepId": "juice",
+          "name": "Juice a dozen limes",
+          "task": "counter",
+          "duration": {
+            "type": "fixed",
+            "seconds": "10m"
+          },
+          "startTrigger": {
+            "type": "afterStep",
+            "stepId": "braise",
+            "offsetSeconds": "-12m"
+          },
+          "description": "Juice the limes. Rinse the blender jar after the salsa."
+        },
+        {
+          "stepId": "blend-margs",
+          "name": "Blend margaritas",
+          "task": "blender",
+          "duration": {
+            "type": "fixed",
+            "seconds": "4m"
+          },
+          "startTrigger": {
+            "type": "afterStep",
+            "stepId": "juice"
+          },
+          "description": "Blend the lime juice, tequila, triple sec and ice in two batches. Salt the rims."
+        }
+      ]
+    },
+    {
+      "trackId": "tortillas",
+      "name": "Tortillas",
+      "steps": [
+        {
+          "stepId": "warm",
+          "name": "Warm tortillas",
+          "task": "burner",
+          "duration": {
+            "type": "variable",
+            "minSeconds": "6m",
+            "maxSeconds": "10m",
+            "defaultSeconds": "8m"
+          },
+          "startTrigger": {
+            "type": "afterStep",
+            "stepId": "braise"
+          },
+          "description": "Warm the tortillas a few at a time in a dry pan, and keep them wrapped in a towel."
+        }
+      ]
+    },
+    {
+      "trackId": "table",
+      "name": "Table",
+      "steps": [
+        {
+          "stepId": "toppings",
+          "name": "Set out toppings",
+          "task": "counter",
+          "duration": {
+            "type": "fixed",
+            "seconds": "10m"
+          },
+          "startTrigger": {
+            "type": "afterStep",
+            "stepId": "braise"
+          },
+          "description": "Set out the onion, cilantro, lime wedges, crema, cotija and the salsa."
+        }
+      ]
+    }
   ],
   "resourceConstraints": [
-    { "task": "burner", "maxConcurrent": 2 }, { "task": "oven", "maxConcurrent": 1 },
-    { "task": "blender", "maxConcurrent": 1 }, { "task": "counter", "maxConcurrent": 2 }
-  ]
+    {
+      "task": "burner",
+      "maxConcurrent": 2
+    },
+    {
+      "task": "oven",
+      "maxConcurrent": 1
+    },
+    {
+      "task": "blender",
+      "maxConcurrent": 1
+    },
+    {
+      "task": "counter",
+      "maxConcurrent": 2
+    }
+  ],
+  "description": "Carnitas braised until they shred, with charred salsa, margaritas and warm tortillas, all landing together. Serves six.",
+  "metadata": {
+    "serves": "Serves 6",
+    "ingredients": [
+      {
+        "name": "pork shoulder, boneless",
+        "measure": "1.5 kg"
+      },
+      {
+        "name": "orange juice",
+        "measure": "250 ml"
+      },
+      {
+        "name": "garlic cloves",
+        "measure": "8"
+      },
+      {
+        "name": "dried oregano",
+        "measure": "1 tbsp"
+      },
+      {
+        "name": "ground cumin",
+        "measure": "2 tsp"
+      },
+      {
+        "name": "bay leaves",
+        "measure": "2"
+      },
+      {
+        "name": "salt",
+        "measure": ""
+      },
+      {
+        "name": "tomatoes",
+        "measure": "6"
+      },
+      {
+        "name": "white onions",
+        "measure": "1½"
+      },
+      {
+        "name": "jalapeños",
+        "measure": "2"
+      },
+      {
+        "name": "cilantro",
+        "measure": "1 bunch"
+      },
+      {
+        "name": "limes",
+        "measure": "16"
+      },
+      {
+        "name": "tequila blanco",
+        "measure": "350 ml"
+      },
+      {
+        "name": "triple sec",
+        "measure": "175 ml"
+      },
+      {
+        "name": "corn tortillas",
+        "measure": "24"
+      },
+      {
+        "name": "crema or sour cream",
+        "measure": "200 g"
+      },
+      {
+        "name": "cotija or feta",
+        "measure": "150 g"
+      }
+    ]
+  }
 }
