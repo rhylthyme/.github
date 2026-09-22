@@ -63,12 +63,12 @@ an Opentrons `.py` file, a CookLang file, a Benchling protocol.
 pip install rhylthyme
 rhylthyme import https://www.bbcgoodfood.com/recipes/classic-lasagne --publish   # any of ~580 recipe sites
 rhylthyme import 52772 -i themealdb                                               # a TheMealDB id -> teriyaki_chicken_casserole.json
-rhylthyme import protocol.py                                                      # an Opentrons protocol
+rhylthyme import https://raw.githubusercontent.com/Opentrons/Protocols/develop/protocols/007992/rna_isolation.ot2.apiv2.py   # an Opentrons protocol
 rhylthyme importers                                                               # what is installed
 ```
 
 `import` validates the program, writes `<programId>.json`, and with
-`--publish` prints a live-timeline URL. `rhylthyme-render <file>.json -o fig.png`
+`--publish` prints a live-timeline URL. `rhylthyme render <file>.json -o fig.png`
 draws it. Details: [rhylthyme-importers](https://github.com/rhylthyme/rhylthyme-importers).
 
 ## Quick start: from an AI assistant (MCP)
@@ -120,7 +120,7 @@ Streamable HTTP, stateless. No account or API key is needed for validation, anal
 | [rhylthyme-spec](https://github.com/rhylthyme/rhylthyme-spec) | JSON Schema for programs and environments, annotated with OWL-Time vocabulary. On PyPI as `rhylthyme-spec`. |
 | [rhylthyme-cli-runner](https://github.com/rhylthyme/rhylthyme-cli-runner) | The `rhylthyme` command a person types: validate a program file offline, run it in a terminal UI with timers, record runs and calibrate durations from them; `analyze`, `publish` and `generate` call the MCP server. Also the Claude skill's source and the prompt-evaluation harness. On PyPI as `rhylthyme-cli-runner`. |
 | [rhylthyme-importers](https://github.com/rhylthyme/rhylthyme-importers) | Importers that turn outside sources into programs: recipes from TheMealDB, Spoonacular, CookLang and about 580 recipe sites; protocols from protocols.io, Opentrons `.py` files and Benchling; slide decks. `rhylthyme import <url>` or `rhylthyme-import`. On PyPI as `rhylthyme-importers`. |
-| [rhylthyme-timeline](https://github.com/rhylthyme/rhylthyme-timeline) | `@rhylthyme/timeline`: zero-dependency timing engine and SVG Gantt renderer with dependency arrows. Tested for parity with the Python validator. On PyPI as `rhylthyme-timeline` (`rhylthyme-render`, runs on Node). |
+| [rhylthyme-timeline](https://github.com/rhylthyme/rhylthyme-timeline) | `@rhylthyme/timeline`: zero-dependency timing engine and SVG Gantt renderer with dependency arrows. Tested for parity with the Python validator. On PyPI as `rhylthyme-timeline` (`rhylthyme render`, runs on Node). |
 | [rhylthyme-examples](https://github.com/rhylthyme/rhylthyme-examples) | Example programs and environment definitions across the verticals. |
 | [rhylthyme-mcp](https://github.com/rhylthyme/rhylthyme-mcp) | The server an AI assistant talks to: source of the hosted MCP server at `mcp.rhylthyme.com` (self-hostable), the Claude plugin marketplace, and the `rhylthyme-mcp` PyPI package, a stdio bridge to the hosted server. |
 | [rhylthyme-docs](https://github.com/rhylthyme/rhylthyme-docs) | Source of docs.rhylthyme.com. |
