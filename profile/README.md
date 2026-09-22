@@ -17,15 +17,15 @@ General entry point: [rhylthyme.com](https://www.rhylthyme.com). Documentation: 
 
 Carnitas braise "until they shred", which nobody can put a number on, and the
 salsa, the margaritas, the tortillas and the table all have to land with them.
-One blender, two burners. With `pip install rhylthyme-cli-runner` done, that
-dinner becomes a live timeline in one line:
+One blender, two burners. With `pip install rhylthyme` done, that dinner
+becomes a live timeline in one line:
 
 ```bash
 rhylthyme publish https://raw.githubusercontent.com/rhylthyme/.github/main/profile/examples/taco-night.json --image taco-night.png --open
 ```
 
-(Or install nothing: put `uvx --python 3.12 --from rhylthyme-cli-runner` in
-front of it.) No account, no API key. It prints a summary, a text chart and
+(Or install nothing: put `uvx --python 3.12 --from rhylthyme` in front of
+it.) No account, no API key. It prints a summary, a text chart and
 
 ```
 Live timeline: https://kitchen.rhylthyme.com?share=7483178bdd5bf694
@@ -82,20 +82,20 @@ Streamable HTTP, stateless. No account or API key is needed for validation, anal
 |---|---|
 | [rhylthyme-spec](https://github.com/rhylthyme/rhylthyme-spec) | JSON Schema for programs and environments, annotated with OWL-Time vocabulary. On PyPI as `rhylthyme-spec`. |
 | [rhylthyme-cli-runner](https://github.com/rhylthyme/rhylthyme-cli-runner) | The `rhylthyme` command a person types: validate a program file offline, run it in a terminal UI with timers, record runs and calibrate durations from them; `analyze`, `publish` and `generate` call the MCP server. Also the Claude skill's source and the prompt-evaluation harness. On PyPI as `rhylthyme-cli-runner`. |
-| [rhylthyme-timeline](https://github.com/rhylthyme/rhylthyme-timeline) | `@rhylthyme/timeline`: zero-dependency timing engine and SVG Gantt renderer with dependency arrows. Tested for parity with the Python validator. |
+| [rhylthyme-timeline](https://github.com/rhylthyme/rhylthyme-timeline) | `@rhylthyme/timeline`: zero-dependency timing engine and SVG Gantt renderer with dependency arrows. Tested for parity with the Python validator. On PyPI as `rhylthyme-timeline` (`rhylthyme-render`, runs on Node). |
 | [rhylthyme-examples](https://github.com/rhylthyme/rhylthyme-examples) | Example programs and environment definitions across the verticals. |
 | [rhylthyme-mcp](https://github.com/rhylthyme/rhylthyme-mcp) | The server an AI assistant talks to: source of the hosted MCP server at `mcp.rhylthyme.com` (self-hostable), the Claude plugin marketplace, and the `rhylthyme-mcp` PyPI package, a stdio bridge to the hosted server. |
 | [rhylthyme-docs](https://github.com/rhylthyme/rhylthyme-docs) | Source of docs.rhylthyme.com. |
 | [paper](https://github.com/rhylthyme/paper) | The preprint: the language, the runtime, the MCP server, and an evaluation of seven language models authoring schedules from text. |
 
-rhylthyme-mcp and rhylthyme-cli-runner are easy to confuse: the first is what an assistant calls, the second is what you run yourself on a program file, and the second is one of the first's clients. Each README has a side-by-side table.
+`pip install rhylthyme` installs rhylthyme-cli-runner, rhylthyme-importers and rhylthyme-timeline together. rhylthyme-mcp and rhylthyme-cli-runner are easy to confuse: the first is what an assistant calls, the second is what you run yourself on a program file, and the second is one of the first's clients. Each README has a side-by-side table.
 
 The web application and the importers (Spoonacular, TheMealDB, protocols.io, Cooklang, Opentrons, Benchling) live in `rhylthyme-server`, which is being prepared for public release.
 
 ## Quick start
 
 ```bash
-pip install rhylthyme-cli-runner rhylthyme-spec
+pip install rhylthyme          # the rhylthyme command, the importers and the renderer
 git clone https://github.com/rhylthyme/rhylthyme-examples
 rhylthyme validate rhylthyme-examples/programs/breakfast_schedule.json
 rhylthyme run      rhylthyme-examples/programs/breakfast_schedule.json
