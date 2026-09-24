@@ -84,6 +84,23 @@ then ask: *"Plan Thanksgiving for 8 with one oven, eating at 6 pm."* In
 Claude, ChatGPT or Cursor, add `https://mcp.rhylthyme.com/mcp` as a
 connector instead. No account is needed; the answer is a live-timeline link.
 
+## Quick start: run lab instruments (galago-tools)
+
+Steps can drive real instruments through
+[galago-tools](https://github.com/sciencecorp/galago-tools), Science
+Corporation's open-source (Apache-2.0) drivers for shakers, incubators, plate
+readers, liquid handlers and robot arms. A step names a galago command, and it
+ends when the instrument replies:
+
+```bash
+pip install "rhylthyme[galago]"
+rhylthyme run protocol.json --workcell lab.json   # simulated unless --live
+```
+
+![rhylthyme run driving three simulated galago tools](https://raw.githubusercontent.com/rhylthyme/rhylthyme-galago/main/docs/images/terminal-running.png)
+
+Details, a three-tool example and screenshots: [rhylthyme-galago](https://github.com/rhylthyme/rhylthyme-galago).
+
 ## For AI agents (MCP)
 
 A remote [Model Context Protocol](https://modelcontextprotocol.io/) server exposes validation, timing analysis, catalog search, import and publication as annotated tools, plus the schema, an authoring guide and example programs as resources.
@@ -121,12 +138,13 @@ Streamable HTTP, stateless. No account or API key is needed for validation, anal
 | [rhylthyme-cli-runner](https://github.com/rhylthyme/rhylthyme-cli-runner) | The `rhylthyme` command a person types: validate a program file offline, run it in a terminal UI with timers, record runs and calibrate durations from them; `analyze`, `publish` and `generate` call the MCP server. Also the Claude skill's source and the prompt-evaluation harness. On PyPI as `rhylthyme-cli-runner`. |
 | [rhylthyme-importers](https://github.com/rhylthyme/rhylthyme-importers) | Importers that turn outside sources into programs: recipes from TheMealDB, Spoonacular, CookLang and about 580 recipe sites; protocols from protocols.io, Opentrons `.py` files and Benchling; slide decks. `rhylthyme import <url>` or `rhylthyme-import`. On PyPI as `rhylthyme-importers`. |
 | [rhylthyme-timeline](https://github.com/rhylthyme/rhylthyme-timeline) | `@rhylthyme/timeline`: zero-dependency timing engine and SVG Gantt renderer with dependency arrows. Tested for parity with the Python validator. On PyPI as `rhylthyme-timeline` (`rhylthyme render`, runs on Node). |
+| [rhylthyme-galago](https://github.com/rhylthyme/rhylthyme-galago) | Runs instrument steps on lab instruments through [galago-tools](https://github.com/sciencecorp/galago-tools) (Science Corporation, Apache-2.0): `rhylthyme run --workcell`, simulated unless `--live`, with failure handling and command checks. On PyPI as `rhylthyme-galago`; `pip install "rhylthyme[galago]"`. |
 | [rhylthyme-examples](https://github.com/rhylthyme/rhylthyme-examples) | Example programs and environment definitions across the verticals. |
 | [rhylthyme-mcp](https://github.com/rhylthyme/rhylthyme-mcp) | The server an AI assistant talks to: source of the hosted MCP server at `mcp.rhylthyme.com` (self-hostable), the Claude plugin marketplace, and the `rhylthyme-mcp` PyPI package, a stdio bridge to the hosted server. |
 | [rhylthyme-docs](https://github.com/rhylthyme/rhylthyme-docs) | Source of docs.rhylthyme.com. |
 | [paper](https://github.com/rhylthyme/paper) | The preprint: the language, the runtime, the MCP server, and an evaluation of seven language models authoring schedules from text. |
 
-`pip install rhylthyme` installs rhylthyme-cli-runner, rhylthyme-importers and rhylthyme-timeline together. rhylthyme-mcp and rhylthyme-cli-runner are easy to confuse: the first is what an assistant calls, the second is what you run yourself on a program file, and the second is one of the first's clients. Each README has a side-by-side table.
+`pip install rhylthyme` installs rhylthyme-cli-runner, rhylthyme-importers and rhylthyme-timeline together; `pip install "rhylthyme[galago]"` adds rhylthyme-galago. rhylthyme-mcp and rhylthyme-cli-runner are easy to confuse: the first is what an assistant calls, the second is what you run yourself on a program file, and the second is one of the first's clients. Each README has a side-by-side table.
 
 The web application lives in `rhylthyme-server`, which is being prepared for public release.
 
@@ -171,4 +189,4 @@ Steps in a track run one after another; parallel work goes in separate tracks; e
 
 ## License
 
-Apache-2.0 throughout: the specification, tools, examples, timeline engine and MCP server.
+Apache-2.0 throughout: the specification, tools, examples, timeline engine, MCP server and galago integration. rhylthyme-galago includes material derived from galago-tools (Copyright 2025 - Science Corporation, Apache-2.0); see its NOTICE.
