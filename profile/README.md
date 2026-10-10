@@ -36,7 +36,7 @@ Streamable HTTP, no sign-in needed for the public catalog and the pure tools (`v
 | Repository | What it is |
 |---|---|
 | [rhylthyme-spec](https://github.com/rhylthyme/rhylthyme-spec) | JSON Schema for programs and environments, annotated with OWL-Time vocabulary. On PyPI as `rhylthyme-spec`. |
-| [rhylthyme-cli-runner](https://github.com/rhylthyme/rhylthyme-cli-runner) | `rhylthyme` command line: validate, plan, run (terminal UI), visualize. On PyPI as `rhylthyme-cli-runner`. |
+| [rhylthyme](https://github.com/rhylthyme/rhylthyme) | The Python library and the `rhylthyme` command line: validate, plan, run (terminal UI), publish. On PyPI as `rhylthyme` (formerly `rhylthyme-cli-runner`). |
 | [rhylthyme-timeline](https://github.com/rhylthyme/rhylthyme-timeline) | `@rhylthyme/timeline`: zero-dependency timing engine and SVG Gantt renderer with dependency arrows. Tested for parity with the Python validator. |
 | [rhylthyme-examples](https://github.com/rhylthyme/rhylthyme-examples) | Example programs and environment definitions across the verticals. |
 | [rhylthyme-mcp](https://github.com/rhylthyme/rhylthyme-mcp) | Documentation for the remote MCP server and its tools. |
@@ -47,7 +47,7 @@ The web application, importers (Spoonacular, TheMealDB, protocols.io, Cooklang, 
 ## Quick start
 
 ```bash
-pip install rhylthyme-cli-runner rhylthyme-spec
+pip install rhylthyme
 git clone https://github.com/rhylthyme/rhylthyme-examples
 rhylthyme validate rhylthyme-examples/programs/breakfast_schedule.json
 rhylthyme run      rhylthyme-examples/programs/breakfast_schedule.json
