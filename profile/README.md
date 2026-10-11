@@ -25,7 +25,7 @@ pip install rhylthyme
 rhylthyme publish https://raw.githubusercontent.com/rhylthyme/.github/main/profile/examples/taco-night.json --image taco-night.png --open
 ```
 
-(Or install nothing: put `uvx --python 3.12 --from rhylthyme-cli-runner` in
+(Or install nothing: put `uvx --python 3.12 --from rhylthyme` in
 front of it.) No account, no API key. It prints a summary, a text chart and
 
 ```
@@ -47,11 +47,12 @@ minutes out, juice the limes 12 minutes out), so if the pork needs another
 quarter of an hour, the margaritas wait with it. Now make it yours: save
 [the program](https://github.com/rhylthyme/.github/blob/main/profile/examples/taco-night.json), add guacamole or take away a
 burner, and `rhylthyme publish taco-night.json`. Or start from a recipe you
-did not write: `rhylthyme import https://www.seriouseats.com/the-best-chili-recipe --publish`
+did not write: after `pip install "rhylthyme[importers]"`,
+`rhylthyme import https://www.seriouseats.com/the-best-chili-recipe --publish`
 turns a page from any of about 580 recipe sites into a timeline (TheMealDB,
 Spoonacular, CookLang, protocols.io, Opentrons and Benchling work the same
 way). Other ways to make
-one: working back from a deadline in a terminal, [rhylthyme-cli-runner](https://github.com/rhylthyme/rhylthyme-cli-runner#a-timeline-in-five-commands-a-birthday-party);
+one: working back from a deadline in a terminal, [rhylthyme](https://github.com/rhylthyme/rhylthyme#a-timeline-in-five-commands-a-birthday-party);
 by asking Claude or ChatGPT, [rhylthyme-mcp](https://github.com/rhylthyme/rhylthyme-mcp#try-it-ask-for-a-workout).
 
 ## Quick start: import a recipe or protocol
@@ -60,7 +61,7 @@ Start from something already written: a recipe page, a protocols.io protocol,
 an Opentrons `.py` file, a CookLang file, a Benchling protocol.
 
 ```bash
-pip install rhylthyme
+pip install "rhylthyme[all]"   # the command plus the importers and the renderer
 rhylthyme import https://www.bbcgoodfood.com/recipes/classic-lasagne --publish   # any of ~580 recipe sites
 rhylthyme import 52772 -i themealdb                                               # a TheMealDB id -> teriyaki_chicken_casserole.json
 rhylthyme import https://raw.githubusercontent.com/Opentrons/Protocols/develop/protocols/007992/rna_isolation.ot2.apiv2.py   # an Opentrons protocol
@@ -135,7 +136,7 @@ Streamable HTTP, stateless. No account or API key is needed for validation, anal
 | Repository | What it is |
 |---|---|
 | [rhylthyme-spec](https://github.com/rhylthyme/rhylthyme-spec) | JSON Schema for programs and environments, annotated with OWL-Time vocabulary. On PyPI as `rhylthyme-spec`. |
-| [rhylthyme-cli-runner](https://github.com/rhylthyme/rhylthyme-cli-runner) | The `rhylthyme` command a person types: validate a program file offline, run it in a terminal UI with timers, record runs and calibrate durations from them; `analyze`, `publish` and `generate` call the MCP server. Also the Claude skill's source and the prompt-evaluation harness. On PyPI as `rhylthyme-cli-runner`. |
+| [rhylthyme](https://github.com/rhylthyme/rhylthyme) | The `rhylthyme` Python library and the `rhylthyme` command a person types: validate a program file offline, run it in a terminal UI with timers, record runs and calibrate durations from them; `analyze`, `publish` and `generate` call the MCP server. Also the Claude skill's source and the prompt-evaluation harness. On PyPI as `rhylthyme` (formerly `rhylthyme-cli-runner`, now a compatibility package). |
 | [rhylthyme-importers](https://github.com/rhylthyme/rhylthyme-importers) | Importers that turn outside sources into programs: recipes from TheMealDB, Spoonacular, CookLang and about 580 recipe sites; protocols from protocols.io, Opentrons `.py` files and Benchling; slide decks. `rhylthyme import <url>` or `rhylthyme-import`. On PyPI as `rhylthyme-importers`. |
 | [rhylthyme-timeline](https://github.com/rhylthyme/rhylthyme-timeline) | `@rhylthyme/timeline`: zero-dependency timing engine and SVG Gantt renderer with dependency arrows. Tested for parity with the Python validator. On PyPI as `rhylthyme-timeline` (`rhylthyme render`, runs on Node). |
 | [rhylthyme-galago](https://github.com/rhylthyme/rhylthyme-galago) | Runs instrument steps on lab instruments through [galago-tools](https://github.com/sciencecorp/galago-tools) (Science Corporation, Apache-2.0): `rhylthyme run --workcell`, simulated unless `--live`, with failure handling and command checks. On PyPI as `rhylthyme-galago`; `pip install "rhylthyme[galago]"`. |
@@ -144,14 +145,14 @@ Streamable HTTP, stateless. No account or API key is needed for validation, anal
 | [rhylthyme-docs](https://github.com/rhylthyme/rhylthyme-docs) | Source of docs.rhylthyme.com. |
 | [paper](https://github.com/rhylthyme/paper) | The preprint: the language, the runtime, the MCP server, and an evaluation of seven language models authoring schedules from text. |
 
-`pip install rhylthyme` installs rhylthyme-cli-runner, rhylthyme-importers and rhylthyme-timeline together; `pip install "rhylthyme[galago]"` adds rhylthyme-galago. rhylthyme-mcp and rhylthyme-cli-runner are easy to confuse: the first is what an assistant calls, the second is what you run yourself on a program file, and the second is one of the first's clients. Each README has a side-by-side table.
+`pip install rhylthyme` installs the library and the `rhylthyme` command; `pip install "rhylthyme[all]"` adds rhylthyme-importers (`rhylthyme import`) and rhylthyme-timeline (`rhylthyme render`), and `pip install "rhylthyme[galago]"` adds rhylthyme-galago. rhylthyme-mcp and rhylthyme are easy to confuse: the first is what an assistant calls, the second is what you run yourself on a program file, and the second is one of the first's clients. Each README has a side-by-side table.
 
 The web application lives in `rhylthyme-server`, which is being prepared for public release.
 
 ## Quick start
 
 ```bash
-pip install rhylthyme          # the rhylthyme command, the importers and the renderer
+pip install rhylthyme          # the rhylthyme command; "rhylthyme[all]" adds the importers and the renderer
 git clone https://github.com/rhylthyme/rhylthyme-examples
 rhylthyme validate rhylthyme-examples/programs/breakfast_schedule.json
 rhylthyme run      rhylthyme-examples/programs/breakfast_schedule.json
