@@ -135,8 +135,8 @@ Streamable HTTP, stateless. No account or API key is needed for validation, anal
 
 | Repository | What it is |
 |---|---|
-| [rhylthyme-spec](https://github.com/rhylthyme/rhylthyme-spec) | JSON Schema for programs and environments, annotated with OWL-Time vocabulary. On PyPI as `rhylthyme-spec`. |
 | [rhylthyme](https://github.com/rhylthyme/rhylthyme) | The `rhylthyme` Python library and the `rhylthyme` command a person types: validate a program file offline, run it in a terminal UI with timers, record runs and calibrate durations from them; `analyze`, `publish` and `generate` call the MCP server. Also the Claude skill's source and the prompt-evaluation harness. On PyPI as `rhylthyme` (formerly `rhylthyme-cli-runner`, now a compatibility package). |
+| [rhylthyme-spec](https://github.com/rhylthyme/rhylthyme-spec) | JSON Schema for programs and environments, annotated with OWL-Time vocabulary. On PyPI as `rhylthyme-spec`. |
 | [rhylthyme-importers](https://github.com/rhylthyme/rhylthyme-importers) | Importers that turn outside sources into programs: recipes from TheMealDB, Spoonacular, CookLang and about 580 recipe sites; protocols from protocols.io, Opentrons `.py` files and Benchling; slide decks. `rhylthyme import <url>` or `rhylthyme-import`. On PyPI as `rhylthyme-importers`. |
 | [rhylthyme-timeline](https://github.com/rhylthyme/rhylthyme-timeline) | `@rhylthyme/timeline`: zero-dependency timing engine and SVG Gantt renderer with dependency arrows. Tested for parity with the Python validator. On PyPI as `rhylthyme-timeline` (`rhylthyme render`, runs on Node). |
 | [rhylthyme-galago](https://github.com/rhylthyme/rhylthyme-galago) | Runs instrument steps on lab instruments through [galago-tools](https://github.com/sciencecorp/galago-tools) (Science Corporation, Apache-2.0): `rhylthyme run --workcell`, simulated unless `--live`, with failure handling and command checks. On PyPI as `rhylthyme-galago`; `pip install "rhylthyme[galago]"`. |
